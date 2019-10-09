@@ -88,22 +88,29 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         val width = resources.displayMetrics.widthPixels
         val height = resources.displayMetrics.heightPixels
-        val padding = (width * 0.12).toInt()
 
+        val paddingDecimal = 0.10
+        val padding = (width * paddingDecimal).toInt()
         val cu = newLatLngBounds(bounds, width, height, padding)
         map.animateCamera(cu)
     }
 
     private fun zoomIntoVehicle(poi: Poi) {
         val location = LatLng(poi.coordinate.latitude, poi.coordinate.longitude)
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0f), 2000, null)
+        val animationSpeed = 2000
+        val zoomLevel = 15.0f
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, zoomLevel), animationSpeed, null)
     }
 
     private fun rotateBitmap(bitmap: Int, poi: Poi): Bitmap? {
         val matrix = Matrix()
-        matrix.postRotate(180 + poi.heading.toFloat())
+        val flipImageVerticallyValue = 180
+        matrix.postRotate(flipImageVerticallyValue + poi.heading.toFloat())
         val source = BitmapFactory.decodeResource(this.resources, bitmap)
-        return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
+        val xCoordinateOfImage = 0
+        val yCoordinateOfImage = 0
+        return Bitmap.createBitmap(source,
+            xCoordinateOfImage, yCoordinateOfImage, source.width, source.height, matrix, true)
     }
 
     private fun observerViewModels() {

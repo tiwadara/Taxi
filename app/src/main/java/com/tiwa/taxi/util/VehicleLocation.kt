@@ -13,10 +13,15 @@ object VehicleLocation {
         var addresses: List<Address>? = null
         try {
             val geocoder = Geocoder(context, Locale.getDefault())
-            addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            val maxResultReturned = 1
+            addresses = geocoder.getFromLocation(location.latitude, location.longitude,
+                maxResultReturned
+            )
         } catch (e: Exception) {
         }
-        return addresses?.get(0)?.getAddressLine(0)
+        val fullAddress = 0
+        val addressLine = 0
+        return addresses?.get(fullAddress)?.getAddressLine(addressLine)
     }
 
 }
