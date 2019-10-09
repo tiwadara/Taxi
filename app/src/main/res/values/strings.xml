@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Tiwa\'s Taxi</string>
+    <string name="title_activity_dashboard">Vehicles In Hamburg</string>
+    <string name="title_map">Map</string>
+    <string name="title_vehicles">Vehicles</string>
+    <string name="pool_image">pool image</string>
+    <string name="taxi_image">taxi image</string>
+    <string name="pooling">Pooling</string>
+    <string name="taxi">Taxi</string>
+    <string name="location_image">location image</string>
+    <string name="fleettype_image">fleettype image</string>
+    <string name="title">Vehicles In Hamburg</string>
+</resources>

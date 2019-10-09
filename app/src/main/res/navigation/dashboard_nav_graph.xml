@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/navigation_map">
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.tiwa.taxi.ui.map.MapFragment"
+        android:label="map_frgament"
+        tools:layout="@layout/fragment_map" >
+
+        <argument
+            android:name="zoomIntoOne"
+            app:argType="boolean"
+            android:defaultValue="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_vehicles"
+        android:name="com.tiwa.taxi.ui.vehicles.VehicleListFragment"
+        android:label="fragment_vehicle_list"
+        tools:layout="@layout/fragment_vehicle" >
+        <action
+            android:id="@+id/action_navigation_vehicles_to_navigation_map"
+            app:destination="@id/navigation_map"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/navigation_map"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
