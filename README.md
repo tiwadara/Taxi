@@ -1,7 +1,7 @@
 # Taxi
 
 
-![Test Image 1](/readme/1.png) ![Test Image 3](/readme/2.png)
+<img src="/readme/2.png" width="128"> <img src="/readme/1.png" width="128">
 
 
 This is a test project using MVVM, Navigation, Retrofit and Coroutine 
