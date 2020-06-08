@@ -1,6 +1,7 @@
 package com.tiwa.taxi.data.repository
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tiwa.taxi.data.constant.Constants.HAMBURG_LAT1
@@ -46,7 +47,6 @@ class VehicleRepository(
     }
 
     private fun getPois() {
-
         scope.launch {
             val dataExists = poiDao.hasPoi()
             if (!dataExists) {
@@ -54,10 +54,11 @@ class VehicleRepository(
                 vehicleService.getInstance().getVehicles(HAMBURG_LAT1, HAMBURG_LONG1, HAMBURG_LAT2, HAMBURG_LONG2)
                     .enqueue(object : Callback<Vehicle> {
                         override fun onFailure(call: Call<Vehicle>, t: Throwable) {
-
+                            Log.e("fail", t.message.toString())
                         }
 
                         override fun onResponse(call: Call<Vehicle>, response: Response<Vehicle>) {
+                            Log.e("dfdfdf", response.body().toString())
                             saveNewPois(response)
                         }
 
@@ -74,6 +75,7 @@ class VehicleRepository(
             val newPoiList: MutableList<Poi> = mutableListOf()
             for (poi in response.body()?.poiList!!) {
                 poi.address = VehicleLocation.getLocationAddress(application, poi.coordinate)
+                Log.e("loc", poi.address.toString())
                 newPoiList.add(poi)
             }
             poiDao.updatePoiList(newPoiList)

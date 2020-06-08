@@ -10,7 +10,7 @@ import com.tiwa.taxi.data.typeconverter.CoordinateTypeConverter
 import kotlinx.coroutines.CoroutineScope
 
 
-@Database(entities = [ Poi::class], version = 1, exportSchema = false)
+@Database(entities = [ Poi::class], version = 2, exportSchema = false)
 @TypeConverters(CoordinateTypeConverter::class)
 
 abstract class VehicleDatabase : RoomDatabase() {
